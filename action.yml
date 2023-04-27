@@ -1,0 +1,69 @@
+name: Deploy CodePush
+description: Releasing a new CodePush
+author: huextrat
+
+inputs:
+  token:
+    description: "AppCenter API token"
+    required: true
+  app:
+    description: "AppCenter app name"
+    required: true
+  deploymentTrack:
+    description: "AppCenter deployment track"
+    required: false
+    default: "Staging"
+  targetBinaryVersion:
+    description: "Target binary version"
+    required: false
+  description:
+    description: "Release description"
+    required: false
+  rollout:
+    description: "Percentage of users to release to"
+    required: false
+    default: "100"
+  privateKeyPath:
+    description: "Path to private key allowing code signing"
+    required: false
+  xcodeProjectFile:
+    description: "Path to xcode project file"
+    required: false
+  buildConfigurationName:
+    description: "iOS build configuration name"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3.6.0
+      with:
+        node-version: 18.15.0
+    - name: 📦 Install App Center cli
+      run: npm install -g appcenter-cli@2.13.5
+      shell: bash
+    - name: 🔑 Login App Center cli
+      run: npx appcenter login --token ${{ inputs.token }}
+      shell: bash
+    - name: 🥇 Set current AppCenter app
+      run: npx appcenter apps set-current ${{ inputs.app }}
+      shell: bash
+    - name: 🐣 Create CodePush environment if not exists
+      run: npx appcenter codepush deployment add ${{ inputs.deploymentTrack }}
+      continue-on-error: true
+      shell: bash
+    - name: 🚀 Deploy CodePush
+      run: |
+        npx appcenter codepush release-react \
+          --deployment-name ${{ inputs.deploymentTrack }} \
+          --target-binary-version ${{ inputs.targetBinaryVersion }} \
+          --private-key-path ${{ inputs.privateKeyPath }}  \
+          --description ${{ inputs.description }} \
+          --rollout ${{ inputs.rollout }} \
+          --build-configuration-name  ${{ inputs.buildConfigurationName }} \
+          --xcode-project-file ${{ inputs.xcodeProjectFile }} \
+      shell: bash
+
+branding:
+  icon: upload-cloud
+  color: red
