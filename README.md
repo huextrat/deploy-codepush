@@ -10,7 +10,7 @@ You will need a `Full Access` [API token](https://learn.microsoft.com/en-us/appc
 
 <!-- start usage -->
 ```yaml
-- uses: huextrat/deploy-codepush@v1
+- uses: huextrat/deploy-codepush@v01
   with:
     # Required, as the AppCenter CLI requires authentication
     # Make it secure, using GitHub secrets for instance
@@ -70,7 +70,7 @@ You will need a `Full Access` [API token](https://learn.microsoft.com/en-us/appc
 
 #### Android
 ```yaml
-- uses: huextrat/deploy-codepush@v1
+- uses: huextrat/deploy-codepush@v1.0.1
   with:
     token: ${{ secrets.APP_CENTER_API_KEY }}
     app: "huextrat/MyApp-Android"
@@ -78,7 +78,7 @@ You will need a `Full Access` [API token](https://learn.microsoft.com/en-us/appc
 
 #### iOS
 ```yaml
-- uses: huextrat/deploy-codepush@v1
+- uses: huextrat/deploy-codepush@v1.0.1
   with:
     token: ${{ secrets.APP_CENTER_API_KEY }}
     app: "huextrat/MyApp-iOS"
@@ -92,7 +92,7 @@ You will need a `Full Access` [API token](https://learn.microsoft.com/en-us/appc
 
 #### Android
 ```yaml
-- uses: huextrat/deploy-codepush@v1
+- uses: huextrat/deploy-codepush@v1.0.1
   with:
     token: ${{ secrets.APP_CENTER_API_KEY }}
     app: "huextrat/MyApp-Android"
@@ -103,7 +103,7 @@ You will need a `Full Access` [API token](https://learn.microsoft.com/en-us/appc
 
 #### iOS
 ```yaml
-- uses: huextrat/deploy-codepush@v1
+- uses: huextrat/deploy-codepush@v1.0.1
   with:
     token: ${{ secrets.APP_CENTER_API_KEY }}
     app: "huextrat/MyApp-iOS"
