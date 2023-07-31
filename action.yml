@@ -40,7 +40,7 @@ runs:
       with:
         node-version: 18.15.0
     - name: 📦 Install App Center cli
-      run: npm install -g appcenter-cli@2.13.9
+      run: npm install -g appcenter-cli@2.13.10
       shell: bash
     - name: 🔑 Login App Center cli
       run: npx appcenter login --token ${{ inputs.token }}
