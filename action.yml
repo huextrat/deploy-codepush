@@ -38,7 +38,7 @@ runs:
   steps:
     - uses: actions/setup-node@v4
       with:
-        node-version: 18.15.0
+        node-version: 18.20.8
     - name: 📦 Install App Center cli
       run: npm install -g appcenter-cli@2.14.0
       shell: bash
