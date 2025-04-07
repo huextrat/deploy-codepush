@@ -1,3 +1,5 @@
+# ⚠️ AppCenter is shut down
+
 # Deploy CodePush
 
 This action deploy a [CodePush](https://learn.microsoft.com/en-us/appcenter/distribution/codepush/) to AppCenter using the AppCenter CLI.
